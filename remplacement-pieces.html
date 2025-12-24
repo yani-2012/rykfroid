@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remplacement de pièces - RYKFroid</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url(https://th.bing.com/th/id/R.862316144bcaeae56032ec2297270623?rik=NNEDvH2CiJUyyg&riu=http%3a%2f%2fapprentiesommeliere.com%2fwp-content%2fuploads%2f2023%2f08%2fc5e22787499ac9e972bf.jpg.webp&ehk=AbzqmkIRh5MVsTdfKq5qtzNq5Jh0N8yWft%2b9yGB5xZw%3d&risl=&pid=ImgRaw&r=0);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            padding-top: 60px;
+        }
+
+        nav.navbar {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #1a1a1a !important;
+        }
+
+        nav.navbar .navbar-brand {
+            font-weight: bold;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        nav.navbar .nav-link {
+            color: #fff !important;
+            margin-left: 20px;
+            transition: color 0.3s ease;
+        }
+
+        nav.navbar .nav-link:hover {
+            color: #007BFF !important;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #007BFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #0056b3;
+        }
+
+        .service-header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .service-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .service-header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .service-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .service-content h2 {
+            color: #fff;
+            background-color: #007BFF;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin: 30px 0 15px 0;
+            font-weight: 700;
+        }
+
+        .service-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .service-content p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .service-content ul {
+            color: #333;
+            line-height: 1.8;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .service-content li {
+            margin-bottom: 10px;
+        }
+
+        .cta-section {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .cta-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .btn-contact {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #007BFF;
+        }
+
+        .btn-contact:hover {
+            background-color: #0056b3;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .service-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .service-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="logo.png" alt="Logo" style="height:50px;" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html#accueil">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+            </ul>
+        </div> 
+    </div>
+</nav>
+
+<div class="service-header">
+    <div class="container">
+        <a href="index.html#services" class="back-link">← Retour aux services</a>
+        <h1>Remplacement de pièces</h1>
+        <p>Pièces d'origine ou compatibles de qualité</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="service-content">
+        <h2>À propos de ce service</h2>
+        <p>Je propose le remplacement de toutes les pièces usées ou défectueuses de vos équipements frigorifiques. J'utilise exclusivement des pièces d'origine ou des pièces compatibles de qualité garantie.</p></p>
+
+        <h2>Pièces disponibles</h2>
+        <ul>
+            <li><strong>Compresseurs :</strong> Pièces moteur essentielles</li>
+            <li><strong>Sondes thermiques :</strong> Capteurs de température</li>
+            <li><strong>Cartes électroniques :</strong> Circuits de contrôle</li>
+            <li><strong>Thermostats :</strong> Régulateurs de température</li>
+            <li><strong>Ventilateurs :</strong> Circulation d'air</li>
+            <li><strong>Joints et tuyauteries :</strong> Éléments d'étanchéité</li>
+            <li><strong>Condenseurs :</strong> Dissipation thermique</li>
+            <li><strong>Évaporateurs :</strong> Refroidissement</li>
+            <li><strong>Filtres :</strong> Purification du fluide</li>
+        </ul>
+
+        <h2>Qualité garantie</h2>
+        <ul>
+            <li>Pièces d'origine ou certifiées compatibles</li>
+            <li>Garantie sur les pièces fournies</li>
+            <li>Traçabilité complète des produits</li>
+            <li>Tests de conformité avant installation</li>
+            <li>Documentation technique fournie</li>
+        </ul>
+
+        <h2>Processus de remplacement</h2>
+        <p>Voici comment nous procédons :</p>
+        <ul>
+            <li>Diagnostic précis de la pièce défectueuse</li>
+            <li>Identification de la pièce de remplacement adéquate</li>
+            <li>Devis transparent avant intervention</li>
+            <li>Démontage de la pièce défectueuse</li>
+            <li>Installation de la nouvelle pièce</li>
+            <li>Testes de fonctionnement complets</li>
+            <li>Conseils d'utilisation de la nouvelle pièce</li>
+        </ul>
+
+        <h2>Avantages du remplacement professionnel</h2>
+        <ul>
+            <li>Garantie de qualité et de durabilité</li>
+            <li>Prévention de dommages secondaires</li>
+            <li>Installation conforme aux normes</li>
+            <li>Économies à long terme</li>
+            <li>Support technique après intervention</li>
+        </ul>
+
+        <h2>Délais</h2>
+        <p>La plupart des pièces sont disponibles en stock ou livrables rapidement. Pour les pièces spéciales, nous nous engageons à les procurer sous 48-72 heures.</p>
+    </div>
+
+    <div class="cta-section">
+        <h3>Une pièce défectueuse ?</h3>
+        <p>Nous vous proposons des pièces de qualité avec installation professionnelle</p>
+        <a href="index.html#contact" class="btn-contact">Demander un devis</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 RYKFroid. Tous droits réservés.</p>
+    <p>Expert en réparation de caves à vin et équipements frigorifiques</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
