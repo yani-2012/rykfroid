@@ -1,262 +1,188 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dépannage frigorifique - RYKFroid</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url(https://th.bing.com/th/id/R.862316144bcaeae56032ec2297270623?rik=NNEDvH2CiJUyyg&riu=http%3a%2f%2fapprentiesommeliere.com%2fwp-content%2fuploads%2f2023%2f08%2fc5e22787499ac9e972bf.jpg.webp&ehk=AbzqmkIRh5MVsTdfKq5qtzNq5Jh0N8yWft%2b9yGB5xZw%3d&risl=&pid=ImgRaw&r=0);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
-            padding-top: 60px;
-        }
-
-        nav.navbar {
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            background-color: #1a1a1a !important;
-        }
-
-        nav.navbar .navbar-brand {
-            font-weight: bold;
-            font-size: 24px;
-            letter-spacing: 1px;
-        }
-
-        nav.navbar .nav-link {
-            color: #fff !important;
-            margin-left: 20px;
-            transition: color 0.3s ease;
-        }
-
-        nav.navbar .nav-link:hover {
-            color: #007BFF !important;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin: 20px 0;
-            color: #007BFF;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .back-link:hover {
-            color: #0056b3;
-        }
-
-        .service-header {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .service-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .service-header p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .service-content {
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
-        }
-
-        .service-content h2 {
-            color: #fff;
-            background-color: #007BFF;
-            padding: 15px 20px;
-            border-radius: 5px;
-            margin: 30px 0 15px 0;
-            font-weight: 700;
-        }
-
-        .service-content h2:first-child {
-            margin-top: 0;
-        }
-
-        .service-content p {
-            color: #333;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-
-        .service-content ul {
-            color: #333;
-            line-height: 1.8;
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        .service-content li {
-            margin-bottom: 10px;
-        }
-
-        .cta-section {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 40px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .cta-section h3 {
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .btn-contact {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #007BFF;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid #007BFF;
-        }
-
-        .btn-contact:hover {
-            background-color: #0056b3;
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
-        }
-
-        footer {
-            background-color: #1a1a1a;
-            color: #fff;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-
-        footer p {
-            margin: 5px 0;
-        }
-
-        @media (max-width: 768px) {
-            .service-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .service-content {
-                padding: 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dépannage Frigorifique Professionnel | RYKFroid</title>
+  <meta name="description" content="Dépannage rapide de tous équipements frigorifiques professionnels : vitrines, armoires, chambres froides. RYKFroid, 20+ ans d'expérience. Devis gratuit."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://www.rykfroid.fr/depannage-frigorifique.html"/>
+  <link rel="stylesheet" href="shared.css"/>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="index.html"><img src="logo.png" alt="Logo" style="height:50px;" /></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html#accueil">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
-            </ul>
-        </div> 
-    </div>
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" href="index.html">
+    <div><a class="nav-logo" href="#accueil">
+  <img src="logo.png" alt="RYKFroid" style="height:44px; margin-right:700px" />
+</a></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#marques">Marques</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Devis gratuit</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<div class="service-header">
-    <div class="container">
-        <a href="index.html#services" class="back-link">← Retour aux services</a>
-        <h1>Dépannage frigorifique</h1>
-        <p>Solutions rapides pour vitrines, armoires et frigos professionnels</p>
+<header class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <nav class="page-breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span>/</span>
+      <span>Dépannage frigorifique</span>
+    </nav>
+    <div class="page-hero-label">Dépannage frigorifique</div>
+    <h1>Dépannage <em>frigorifique</em><br>professionnel</h1>
+    <p class="page-hero-sub">Intervention rapide sur vitrines réfrigérées, armoires froides, chambres froides et tous équipements de réfrigération professionnelle. Diagnostic sur site, devis gratuit.</p>
+  </div>
+</header>
+
+
+<section class="content-section dark-bg">
+  <div class="content-wrapper">
+    <div class="content-grid reveal">
+      <div>
+        <div class="section-label">Réfrigération professionnelle</div>
+        <h2 class="section-title">Dépannage <em>frigorifique</em> toutes installations</h2>
+        <p class="body-text">Une panne sur un équipement frigorifique professionnel, c'est une perte d'exploitation immédiate. Produits à risque, clients impactés, coûts qui s'accumulent. RYKFroid comprend ces enjeux et met tout en œuvre pour <strong>intervenir dans les meilleurs délais</strong>.</p>
+        <p class="body-text">Nous intervenons sur tous les équipements frigorifiques professionnels et particuliers : vitrines de vente, armoires réfrigérées, meubles de présentation, groupes de production de froid positif et négatif.</p>
+        <p class="body-text">Avec plus de 20 ans d'expérience terrain, nous diagnostiquons et réparons rapidement, que la panne soit électrique, électronique ou mécanique.</p>
+      </div>
+      <div>
+        <div class="info-card" style="margin-bottom:16px;">
+          <div class="info-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Intervention rapide</h3>
+          <p>Prise en charge téléphonique le jour même. Déplacement sous 24 à 48h selon disponibilités et urgence de la situation.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Devis gratuit avant intervention</h3>
+          <p>Diagnostic sur site, devis écrit détaillé. Aucune facturation sans votre accord préalable.</p>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
 
-<div class="container">
-    <div class="service-content">
-        <h2>À propos de ce service</h2>
-        <p>J'offre un service de dépannage frigorifique complet et rapide pour tous vos équipements professionnels. Qu'il s'agisse de vitrines réfrigérées, d'armoires frigorifiques ou de frigos professionnels, j'interviens rapidement.</p>
-
-        <h2>Types d'équipements traités</h2>
-        <ul>
-            <li>Vitrines réfrigérées (fruits, légumes, produits laitiers)</li>
-            <li>Armoires frigorifiques positives et négatives</li>
-            <li>Frigos professionnels de cuisine</li>
-            <li>Congélateurs et conservateurs</li>
-            <li>Machines à glaçons</li>
+<section class="content-section">
+  <div class="content-wrapper reveal">
+    <div class="section-label">Équipements couverts</div>
+    <h2 class="section-title">Sur quels <em>équipements</em> intervenons-nous ?</h2>
+    <div class="content-grid three" style="margin-top:40px;">
+      <div class="info-card">
+        <h3>Vitrines réfrigérées</h3>
+        <ul class="feature-list">
+          <li>Vitrines boulangeries &amp; pâtisseries</li>
+          <li>Vitrines traiteurs &amp; charcuteries</li>
+          <li>Comptoirs réfrigérés</li>
+          <li>Meubles de vente ouverts</li>
         </ul>
-
-        <h2>Problèmes traités</h2>
-        <ul>
-            <li>Refroidissement insuffisant</li>
-            <li>Fuite d'eau ou de fluide frigorifique</li>
-            <li>Compresseur défectueux</li>
-            <li>Ventilateur bloqué ou cassé</li>
-            <li>Dysfonctionnement de l'électronique</li>
+      </div>
+      <div class="info-card">
+        <h3>Armoires frigorifiques</h3>
+        <ul class="feature-list">
+          <li>Armoires positives et négatives</li>
+          <li>Armoires GN 2/1 et 1/1</li>
+          <li>Armoires inox CHR</li>
+          <li>Armoires ventilées et statiques</li>
         </ul>
-
-        <h2>Nos avantages</h2>
-        <ul>
-            <li>Intervention rapide et efficace</li>
-            <li>Dépannage 24h/24 possible</li>
-            <li>Expertise sur tous les systèmes positifs et négatifs</li>
-            <li>Pièces de rechange en stock</li>
-            <li>Entretien préventif disponible</li>
+      </div>
+      <div class="info-card">
+        <h3>Autres équipements</h3>
+        <ul class="feature-list">
+          <li>Cellules de refroidissement rapide</li>
+          <li>Tables réfrigérées</li>
+          <li>Lave-verres et refroidisseurs</li>
+          <li>Groupes froids positifs &amp; négatifs</li>
         </ul>
-
-        <h2>Processus d'intervention</h2>
-        <p>Notre approche garantit une réparation durable :</p>
-        <ul>
-            <li>Diagnostic rapide du problème</li>
-            <li>Démontage et inspection complète</li>
-            <li>Réparation ou remplacement des pièces défectueuses</li>
-            <li>Recharge en fluide frigorifique si nécessaire</li>
-            <li>Tests de fonctionnement complets</li>
-            <li>Mise en conformité et sécurité</li>
-        </ul>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="cta-section">
-        <h3>Votre équipement frigorifique ne fonctionne plus ?</h3>
-        <p>Faites appel à nos experts pour un dépannage rapide et fiable</p>
-        <a href="index.html#contact" class="btn-contact">Prendre rendez-vous</a>
+
+<section class="other-services">
+  <div class="content-wrapper">
+    <div class="section-label">Autres services</div>
+    <h2 class="section-title">Nos autres <em>expertises</em></h2>
+  </div>
+  <div class="other-services-grid">
+    <a href="reparation-caves-vin.html" class="other-service-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"/><path d="M12 11v11"/><path d="M5 3h14l-1.5 8a5.5 5.5 0 0 1-11 0L5 3z"/></svg> Réparation cave à vin</a>
+<a href="diagnostic-panne.html" class="other-service-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Diagnostic & panne</a>
+<a href="maintenance-entretien.html" class="other-service-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Maintenance & entretien</a>
+<a href="installation-materiel.html" class="other-service-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Installation de matériel</a>
+<a href="remplacement-pieces.html" class="other-service-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/></svg> Remplacement de pièces</a>
+
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="content-wrapper">
+    <h2>Un problème ? Contactez-nous <em>sans attendre</em></h2>
+    <p>Diagnostic téléphonique gratuit · Devis sans engagement · Intervention rapide</p>
+    <div class="cta-actions">
+      <a href="tel:+33652597941" class="btn-primary">+33 6 52 59 79 41</a>
+      <a href="index.html#contact" class="btn-outline">Envoyer une demande</a>
     </div>
+  </div>
 </div>
 
 <footer>
-    <p>&copy; 2025 RYKFroid. Tous droits réservés.</p>
-    <p>Expert en réparation de caves à vin et équipements frigorifiques</p>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <div><a class="nav-logo" href="#accueil">
+  <img src="logo.png" alt="RYKFroid" style="height:44px;" />
+</a></div>
+      </div>
+      <p>Votre expert indépendant en réparation de caves à vin et équipements frigorifiques. 20+ ans d'expérience, intervention rapide, devis gratuit.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="reparation-caves-vin.html">Réparation cave à vin</a></li>
+        <li><a href="depannage-frigorifique.html">Dépannage frigorifique</a></li>
+        <li><a href="diagnostic-panne.html">Diagnostic &amp; panne</a></li>
+        <li><a href="maintenance-entretien.html">Maintenance &amp; entretien</a></li>
+        <li><a href="installation-materiel.html">Installation matériel</a></li>
+        <li><a href="remplacement-pieces.html">Remplacement pièces</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+33652597941">+33 6 52 59 79 41</a></li>
+        <li><a href="mailto:rykfroid@gmail.com">rykfroid@gmail.com</a></li>
+        <li><a href="index.html#faq">Questions fréquentes</a></li>
+        <li><a href="index.html#contact">Demander un devis</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 RYKFroid – Auto-entrepreneur. Tous droits réservés.</p>
+    <p>Expert frigoriste indépendant · Réparation cave à vin · Dépannage frigorifique</p>
+  </div>
 </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
