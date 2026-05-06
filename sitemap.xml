@@ -7,44 +7,48 @@
 
   <url>
     <loc>https://rykfroid.fr/</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <priority>1.00</priority>
   </url>
-
   <url>
     <loc>https://rykfroid.fr/reparation-caves-vin.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <priority>0.90</priority>
   </url>
-
   <url>
     <loc>https://rykfroid.fr/depannage-frigorifique.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <priority>0.90</priority>
   </url>
-
   <url>
     <loc>https://rykfroid.fr/diagnostic-panne.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <priority>0.80</priority>
   </url>
-
   <url>
     <loc>https://rykfroid.fr/maintenance-entretien.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <priority>0.80</priority>
   </url>
-
   <url>
     <loc>https://rykfroid.fr/installation-materiel.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <priority>0.80</priority>
   </url>
-
   <url>
     <loc>https://rykfroid.fr/remplacement-pieces.html</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://rykfroid.fr/mentions-legales.html</loc>
+    <lastmod>2026-05-07</lastmod>
+    <priority>0.20</priority>
+  </url>
+  <url>
+    <loc>https://rykfroid.fr/politique-confidentialite.html</loc>
+    <lastmod>2026-05-07</lastmod>
+    <priority>0.20</priority>
   </url>
 
 </urlset>
