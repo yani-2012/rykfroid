@@ -1,232 +1,65 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Maintenance & entretien frigorifique | RYKFroid</title>
-  <meta name="description" content="Maintenance préventive de caves à vin et équipements frigorifiques : nettoyage, contrôle des températures, vérification du circuit froid, entretien complet et conseils personnalisés."/>
-  <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://www.rykfroid.fr/maintenance-entretien.html"/>
-  <link rel="stylesheet" href="css.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RYKFroid – Site en maintenance</title>
+  <meta name="description" content="Le site RYKFroid est temporairement en maintenance. Il sera de retour très prochainement." />
+  <link rel="icon" href="/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #C9A96E;
+      --gold-light: #E2C99A;
+      --charcoal: #111318;
+      --dark-card: #232838;
+      --white: #FEFEFE;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 32px 16px;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(ellipse at top, rgba(107,31,42,.35), transparent 60%),
+        var(--charcoal);
+      text-align: center;
+    }
+    .box {
+      max-width: 560px; width: 100%;
+      padding: 48px 32px;
+      background: rgba(35,40,56,.55);
+      border: 1px solid rgba(201,169,110,.2);
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(201,169,110,.12);
+    }
+    .logo { width: 120px; height: auto; margin-bottom: 28px; }
+    .tag {
+      display: inline-block; margin-bottom: 18px;
+      font-size: .75rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400; font-size: clamp(2rem, 6vw, 2.8rem); line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    h1 em { color: var(--gold-light); font-style: italic; }
+    p { font-weight: 300; line-height: 1.7; color: rgba(254,254,254,.75); }
+    .line { width: 60px; height: 1px; background: var(--gold); margin: 28px auto 0; opacity: .6; }
+  </style>
 </head>
-
 <body>
-
-<nav class="navbar" id="navbar">
-  <a class="nav-logo" href="index.html" aria-label="Accueil RYKFroid">
-    <img src="logo.png" alt="RYKFroid" class="logo-img" />
-  </a>
-
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="index.html#services">Services</a></li>
-    <li><a href="index.html#types-caves">Types de caves</a></li>
-    <li><a href="index.html#faq">FAQ</a></li>
-    <li><a href="index.html#contact" class="nav-cta">Devis gratuit</a></li>
-  </ul>
-
-  <button class="burger" id="burger" aria-label="Ouvrir le menu" type="button">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<header class="page-hero">
-  <div class="page-hero-bg"></div>
-  <div class="page-hero-content">
-    <nav class="page-breadcrumb" aria-label="Fil d'Ariane">
-      <a href="index.html">Accueil</a>
-      <span>/</span>
-      <span>Maintenance & entretien</span>
-    </nav>
-
-    <div class="page-hero-label">Maintenance & entretien</div>
-
-    <h1>Maintenance &amp; entretien<br>de vos <em>équipements</em></h1>
-
-    <p class="page-hero-sub">
-      Un entretien régulier évite les pannes, réduit la consommation d'énergie et prolonge la durée de vie de vos équipements. Nous intervenons chez les particuliers et les professionnels.
-    </p>
-  </div>
-</header>
-
-<section class="content-section dark-bg">
-  <div class="content-wrapper">
-    <div class="content-grid reveal">
-      <div>
-        <div class="section-label">Prévention des pannes</div>
-
-        <h2 class="section-title">
-          Maintenance <em>régulière</em>, équipement durable
-        </h2>
-
-        <p class="body-text">
-          Un équipement frigorifique bien entretenu tombe moins souvent en panne, consomme moins d'énergie et dure plus longtemps. La maintenance préventive est souvent négligée, pourtant elle permet d'éviter de nombreuses réparations d'urgence coûteuses.
-        </p>
-
-        <p class="body-text">
-          RYKFroid propose un entretien adapté à vos besoins, aussi bien pour les particuliers avec une cave à vin que pour les professionnels disposant de plusieurs équipements frigorifiques.
-        </p>
-
-        <p class="body-text">
-          À chaque visite, vous recevez un <strong>compte-rendu d'intervention</strong> avec l'état des composants vérifiés et les recommandations utiles pour les mois à venir.
-        </p>
-      </div>
-
-      <div>
-        <div class="info-card" style="margin-bottom:16px;">
-          <div class="info-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <h3>Maintenance préventive</h3>
-          <p>Anticiper la panne plutôt que la subir. Un entretien régulier aide à préserver les performances et la durée de vie de vos équipements.</p>
-        </div>
-
-        <div class="info-card">
-          <div class="info-card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2"/>
-              <line x1="8" y1="21" x2="16" y2="21"/>
-              <line x1="12" y1="17" x2="12" y2="21"/>
-            </svg>
-          </div>
-          <h3>Rapport d'entretien détaillé</h3>
-          <p>Document remis après chaque visite avec l'état des composants, les mesures relevées et les recommandations.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="content-section">
-  <div class="content-wrapper reveal">
-    <div class="section-label">Ce qui est vérifié</div>
-
-    <h2 class="section-title">
-      Le contenu d'une <em>visite d'entretien</em>
-    </h2>
-
-    <div class="content-grid" style="margin-top:40px;">
-      <div>
-        <ul class="feature-list">
-          <li>Nettoyage du condenseur et de l'évaporateur</li>
-          <li>Contrôle du niveau de fluide frigorigène si nécessaire</li>
-          <li>Mesure et vérification des températures</li>
-          <li>Contrôle du compresseur et de ses paramètres</li>
-          <li>Vérification du ventilateur et des filtres</li>
-        </ul>
-      </div>
-
-      <div>
-        <ul class="feature-list">
-          <li>Contrôle des sondes et capteurs</li>
-          <li>Vérification des joints et de l'étanchéité</li>
-          <li>Test de la carte électronique et du thermostat</li>
-          <li>Contrôle de la consommation électrique</li>
-          <li>Conseils d'utilisation personnalisés</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="other-services">
-  <div class="content-wrapper">
-    <div class="section-label">Autres services</div>
-    <h2 class="section-title">Nos autres <em>expertises</em></h2>
-  </div>
-
-  <div class="other-services-grid">
-    <a href="reparation-caves-vin.html" class="other-service-link">Réparation cave à vin</a>
-    <a href="depannage-frigorifique.html" class="other-service-link">Dépannage frigorifique</a>
-    <a href="diagnostic-panne.html" class="other-service-link">Diagnostic & panne</a>
-    <a href="installation-materiel.html" class="other-service-link">Installation de matériel</a>
-    <a href="remplacement-pieces.html" class="other-service-link">Remplacement de pièces</a>
-  </div>
-</section>
-
-<div class="cta-band">
-  <div class="content-wrapper">
-    <h2>Un problème ? Contactez-nous <em>sans attendre</em></h2>
-    <p>Diagnostic téléphonique gratuit · Devis sans engagement · Intervention rapide</p>
-
-    <div class="cta-actions">
-      <a href="tel:+33652597941" class="btn-primary">+33 6 52 59 79 41</a>
-      <a href="index.html#contact" class="btn-outline">Envoyer une demande</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-        <div>
-          <a class="nav-logo" href="index.html">
-            <img src="logo.png" alt="RYKFroid" style="height:44px;" />
-          </a>
-        </div>
-      </div>
-
-      <p>
-        Votre expert indépendant en réparation de caves à vin et équipements frigorifiques. 20+ ans d'expérience, intervention rapide, devis gratuit.
-      </p>
-    </div>
-
-    <div class="footer-col">
-      <h5>Services</h5>
-      <ul>
-        <li><a href="reparation-caves-vin.html">Réparation cave à vin</a></li>
-        <li><a href="depannage-frigorifique.html">Dépannage frigorifique</a></li>
-        <li><a href="diagnostic-panne.html">Diagnostic &amp; panne</a></li>
-        <li><a href="maintenance-entretien.html">Maintenance &amp; entretien</a></li>
-        <li><a href="installation-materiel.html">Installation matériel</a></li>
-        <li><a href="remplacement-pieces.html">Remplacement pièces</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h5>Contact</h5>
-      <ul>
-        <li><a href="tel:+33652597941">+33 6 52 59 79 41</a></li>
-        <li><a href="mailto:rykfroid@gmail.com">rykfroid@gmail.com</a></li>
-        <li><a href="index.html#faq">Questions fréquentes</a></li>
-        <li><a href="index.html#contact">Demander un devis</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p>© 2025 RYKFroid – Auto-entrepreneur. Tous droits réservés.</p>
-    <p>Expert frigoriste indépendant · Réparation cave à vin · Dépannage frigorifique</p>
-  </div>
-</footer>
-
-<script>
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
-
-  const burger = document.getElementById('burger');
-  const navLinks = document.getElementById('navLinks');
-
-  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
-
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-
+  <main class="box">
+    <img class="logo" src="/logo.png" alt="RYKFroid" />
+    <span class="tag">Maintenance en cours</span>
+    <h1>Notre site fait peau <em>neuve</em></h1>
+    <p>Nous apportons quelques améliorations à notre site.<br />Il sera de retour très prochainement. Merci de votre patience.</p>
+    <div class="line"></div>
+  </main>
 </body>
 </html>
