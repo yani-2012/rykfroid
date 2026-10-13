@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Demande d'avis | RYKFroid</title>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="icon" type="image/png" href="logo.png"/>
+  <link rel="apple-touch-icon" href="logo.png"/>
+  <link rel="stylesheet" href="css.css"/>
+  <style>
+    body { padding: 96px 16px 48px; }
+    .tool {
+      max-width: 640px; margin: 0 auto;
+      background: var(--dark-card);
+      border: 1px solid rgba(201,169,110,.15);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+    }
+    .tool h1 { font-family: var(--font-display); font-weight: 400; font-size: 2rem; margin-bottom: 6px; }
+    .tool h1 em { color: var(--gold); }
+    .intro { color: rgba(255,255,255,.6); font-size: .92rem; line-height: 1.6; margin-bottom: 28px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block; margin-bottom: 8px;
+      font-size: .78rem; letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,.55); font-weight: 500;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 13px 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1); border-radius: 8px;
+      color: white; font-family: var(--font-body); font-size: .95rem;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,169,110,.1);
+    }
+    .form-group select option { background: var(--dark-card); }
+    .form-group textarea { resize: vertical; min-height: 230px; line-height: 1.55; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+    .actions button {
+      padding: 14px 10px; border-radius: 8px; cursor: pointer;
+      font-family: var(--font-body); font-size: .92rem; font-weight: 600;
+      border: 1px solid rgba(201,169,110,.4); background: transparent; color: var(--gold);
+      transition: background .2s, color .2s;
+    }
+    .actions button:hover { background: rgba(201,169,110,.1); }
+    .actions .main { background: var(--gold); color: var(--charcoal); border-color: var(--gold); grid-column: 1 / -1; }
+    .actions .main:hover { background: var(--gold-light); }
+    .hint { margin-top: 18px; font-size: .8rem; color: rgba(255,255,255,.4); line-height: 1.5; }
+    .toast {
+      position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+      background: var(--gold); color: var(--charcoal); font-weight: 600; font-size: .9rem;
+      padding: 10px 18px; border-radius: 999px; opacity: 0; transition: opacity .25s; pointer-events: none;
+    }
+    .toast.show { opacity: 1; }
+    @media (max-width: 520px) {
+      .row, .actions { grid-template-columns: 1fr; }
+      .tool { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" href="index.html" aria-label="Accueil RYKFroid">
+    <img src="logo.png" alt="RYKFroid" class="logo-img" />
+  </a>
+</nav>
+
+<main class="tool">
+  <h1>Demande <em>d'avis</em></h1>
+  <p class="intro">Après une intervention, remplis ces champs : le message se prépare tout seul. Envoie-le ensuite par Gmail, par ton application mail ou par SMS.</p>
+
+  <div class="row">
+    <div class="form-group">
+      <label for="prenom">Prénom du client</label>
+      <input type="text" id="prenom" placeholder="Ex : Jean" autocomplete="off" />
+    </div>
+    <div class="form-group">
+      <label for="date">Date d'intervention</label>
+      <input type="date" id="date" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-mail du client</label>
+    <input type="email" id="email" placeholder="client@email.com" autocomplete="off" />
+  </div>
+
+  <div class="form-group">
+    <label for="intervention">Type d'intervention</label>
+    <select id="intervention">
+      <option>Dépannage</option>
+      <option>Diagnostic de panne</option>
+      <option>Maintenance / entretien</option>
+      <option>Installation</option>
+      <option>Remplacement de pièces</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Message (modifiable)</label>
+    <textarea id="message"></textarea>
+  </div>
+
+  <div class="actions">
+    <button type="button" class="main" id="btnGmail">Envoyer avec Gmail</button>
+    <button type="button" id="btnMail">Application mail</button>
+    <button type="button" id="btnSms">Envoyer par SMS</button>
+    <button type="button" id="btnCopy" style="grid-column:1 / -1">Copier le message</button>
+  </div>
+
+  <p class="hint">Cette page n'est pas liée au reste du site et n'est pas indexée par Google. Rien n'est enregistré ici : les champs se vident quand tu fermes la page.
+    <a href="espace-pro.html" style="color:var(--gold);">Retour à l'espace pro</a></p>
+</main>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+  const SITE = 'https://www.rykfroid.fr/avis.html';
+  const $ = id => document.getElementById(id);
+  const fields = ['prenom', 'date', 'intervention'];
+  let edited = false;
+
+  $('date').valueAsDate = new Date();
+
+  // Client choisi depuis l'espace pro
+  let smsTo = '';
+  try {
+    const prefill = JSON.parse(sessionStorage.getItem('ryk_prefill') || 'null');
+    sessionStorage.removeItem('ryk_prefill');
+    if (prefill) {
+      $('prenom').value = prefill.prenom || '';
+      $('email').value = prefill.email || '';
+      smsTo = (prefill.telephone || '').replace(/[^\d+]/g, '');
+    }
+  } catch (e) {}
+
+  function reviewLink() {
+    return SITE + '?intervention=' + encodeURIComponent($('intervention').value);
+  }
+
+  function formatDate(value) {
+    if (!value) return '';
+    const [y, m, d] = value.split('-').map(Number);
+    return new Date(y, m - 1, d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  function buildMessage() {
+    const prenom = $('prenom').value.trim();
+    const date = formatDate($('date').value);
+    const type = $('intervention').value.toLowerCase();
+    return (prenom ? `Bonjour ${prenom},` : 'Bonjour,') + '\n\n'
+      + `Merci de m'avoir fait confiance pour votre ${type}${date ? ' du ' + date : ''}.\n\n`
+      + "Votre avis m'aide beaucoup à faire connaître mon activité. Pourriez-vous prendre deux minutes pour me dire comment s'est passée l'intervention ?\n\n"
+      + reviewLink() + '\n\n'
+      + "Si quelque chose n'allait pas, n'hésitez pas à me le dire directement en répondant à ce message.\n\n"
+      + 'Merci beaucoup et à bientôt,\n'
+      + "M'hend – RYKFroid\n"
+      + '06 52 59 79 41';
+  }
+
+  function refresh() { if (!edited) $('message').value = buildMessage(); }
+  fields.forEach(id => $(id).addEventListener('input', refresh));
+  $('message').addEventListener('input', () => { edited = true; });
+  refresh();
+
+  const SUBJECT = 'Votre avis sur notre intervention – RYKFroid';
+
+  function toast(text) {
+    const t = $('toast');
+    t.textContent = text;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2200);
+  }
+
+  function needEmail() {
+    const email = $('email');
+    if (!email.value.trim() || !email.checkValidity()) {
+      email.focus();
+      toast("Indique d'abord un e-mail valide");
+      return null;
+    }
+    return email.value.trim();
+  }
+
+  $('btnGmail').addEventListener('click', () => {
+    const to = needEmail(); if (!to) return;
+    const url = 'https://mail.google.com/mail/?view=cm&fs=1'
+      + '&to=' + encodeURIComponent(to)
+      + '&su=' + encodeURIComponent(SUBJECT)
+      + '&body=' + encodeURIComponent($('message').value);
+    window.open(url, '_blank', 'noopener');
+  });
+
+  $('btnMail').addEventListener('click', () => {
+    const to = needEmail(); if (!to) return;
+    location.href = 'mailto:' + encodeURIComponent(to)
+      + '?subject=' + encodeURIComponent(SUBJECT)
+      + '&body=' + encodeURIComponent($('message').value);
+  });
+
+  $('btnSms').addEventListener('click', () => {
+    location.href = 'sms:' + smsTo + '?&body=' + encodeURIComponent($('message').value);
+  });
+
+  $('btnCopy').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText($('message').value);
+      toast('Message copié');
+    } catch (e) {
+      $('message').select();
+      toast('Sélectionné : fais Ctrl + C');
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,65 +1,151 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RYKFroid – Site en maintenance</title>
-  <meta name="description" content="Le site RYKFroid est temporairement en maintenance. Il sera de retour très prochainement." />
-  <link rel="icon" href="/logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --gold: #C9A96E;
-      --gold-light: #E2C99A;
-      --charcoal: #111318;
-      --dark-card: #232838;
-      --white: #FEFEFE;
-    }
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      padding: 32px 16px;
-      font-family: 'DM Sans', system-ui, sans-serif;
-      color: var(--white);
-      background:
-        radial-gradient(ellipse at top, rgba(107,31,42,.35), transparent 60%),
-        var(--charcoal);
-      text-align: center;
-    }
-    .box {
-      max-width: 560px; width: 100%;
-      padding: 48px 32px;
-      background: rgba(35,40,56,.55);
-      border: 1px solid rgba(201,169,110,.2);
-      border-radius: 20px;
-      box-shadow: 0 0 40px rgba(201,169,110,.12);
-    }
-    .logo { display: block; width: 120px; height: auto; margin: 0 auto 28px; }
-    .tag {
-      display: block; margin-bottom: 18px; padding-left: .2em;
-      font-size: .75rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--gold);
-    }
-    h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400; font-size: clamp(2rem, 6vw, 2.8rem); line-height: 1.15;
-      margin-bottom: 18px;
-    }
-    h1 em { color: var(--gold-light); font-style: italic; }
-    p { font-weight: 300; line-height: 1.7; color: rgba(254,254,254,.75); }
-    .line { width: 60px; height: 1px; background: var(--gold); margin: 28px auto 0; opacity: .6; }
-  </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mentions Légales | RYKFroid</title>
+  <meta name="description" content="Mentions légales du site RYKFroid – Expert frigoriste indépendant."/>
+  <meta name="robots" content="noindex, follow"/>
+  <link rel="stylesheet" href="css.css"/>
+  <link rel="icon" type="image/png" href="logo.png"/>
+  <link rel="apple-touch-icon" href="logo.png"/>
+  <link rel="stylesheet" href="extras.css"/>
 </head>
 <body>
-  <main class="box">
-    <img class="logo" src="/logo.png" alt="RYKFroid" />
-    <span class="tag">Maintenance en cours</span>
-    <h1>Notre site fait peau <em>neuve</em></h1>
-    <p>Nous apportons quelques améliorations à notre site.<br />Il sera de retour très prochainement. Merci de votre patience.</p>
-    <div class="line"></div>
-  </main>
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" href="index.html" aria-label="Accueil RYKFroid">
+    <img src="logo.png" alt="RYKFroid" class="logo-img" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Devis gratuit</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Ouvrir le menu" type="button">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <nav class="page-breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span>/</span>
+      <span>Mentions légales</span>
+    </nav>
+    <div class="page-hero-label">Informations légales</div>
+    <h1>Mentions <em>légales</em></h1>
+    <p class="page-hero-sub">Conformément aux dispositions de la loi n°2004-575 du 21 juin 2004 pour la confiance en l'économie numérique.</p>
+  </div>
+</header>
+
+<section class="content-section dark-bg">
+  <div class="content-wrapper" style="max-width:800px;">
+
+    <div style="margin-bottom:48px;">
+      <div class="section-label">Éditeur du site</div>
+      <h2 class="section-title" style="font-size:1.8rem;margin-bottom:24px;">Identité de <em>l'éditeur</em></h2>
+      <ul class="feature-list">
+        <li><strong style="color:white;margin-right:8px;">Nom :</strong> OUAKSEL M'hend</li>
+        <li><strong style="color:white;margin-right:8px;">Statut :</strong> Auto-entrepreneur</li>
+        <li><strong style="color:white;margin-right:8px;">Activité :</strong> Dépannage, réparation et entretien d'équipements frigorifiques</li>
+        <li><strong style="color:white;margin-right:8px;">SIRET :</strong> 987 584 091 00019</li>
+        <li><strong style="color:white;margin-right:8px;">Adresse :</strong> 1 rue de Gergovie, 75014 Paris, France</li>
+        <li><strong style="color:white;margin-right:8px;">Email :</strong> rykfroid@gmail.com</li>
+        <li><strong style="color:white;margin-right:8px;">Téléphone :</strong> +33 6 52 59 79 41</li>
+        <li><strong style="color:white;margin-right:8px;">Directeur de la publication :</strong> OUAKSEL M'hend</li>
+      </ul>
+    </div>
+
+    <div style="margin-bottom:48px;">
+      <div class="section-label">Hébergement</div>
+      <h2 class="section-title" style="font-size:1.8rem;margin-bottom:24px;">Hébergeur du <em>site</em></h2>
+      <ul class="feature-list">
+        <li><strong style="color:white;margin-right:8px;">Hébergeur :</strong> GitHub, Inc. (service GitHub Pages)</li>
+        <li><strong style="color:white;margin-right:8px;">Adresse :</strong> 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis</li>
+        <li><strong style="color:white;margin-right:8px;">Site :</strong> <a href="https://github.com" style="color:var(--gold);">github.com</a></li>
+      </ul>
+      <p class="body-text" style="margin-top:16px;">Le nom de domaine rykfroid.fr est enregistré auprès d'OVHcloud, 2 rue Kellermann, 59100 Roubaix, France.</p>
+    </div>
+
+    <div style="margin-bottom:48px;">
+      <div class="section-label">Propriété intellectuelle</div>
+      <h2 class="section-title" style="font-size:1.8rem;margin-bottom:24px;">Droits et <em>propriété</em></h2>
+      <p class="body-text">L'ensemble du contenu de ce site (textes, images, logos, structure) est la propriété exclusive de OUAKSEL M'hend – RYKFroid, protégé par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
+      <p class="body-text" style="margin-top:16px;">Toute reproduction, représentation, modification ou exploitation partielle ou totale des contenus sans autorisation expresse est interdite et constitue une contrefaçon sanctionnée par le Code de la propriété intellectuelle.</p>
+    </div>
+
+    <div style="margin-bottom:48px;">
+      <div class="section-label">Responsabilité</div>
+      <h2 class="section-title" style="font-size:1.8rem;margin-bottom:24px;">Limitation de <em>responsabilité</em></h2>
+      <p class="body-text">RYKFroid s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, RYKFroid ne peut garantir l'exactitude, la complétude ou l'actualité des informations. L'utilisateur reconnaît utiliser ces informations sous sa responsabilité exclusive.</p>
+    </div>
+
+    <div>
+      <div class="section-label">Droit applicable</div>
+      <h2 class="section-title" style="font-size:1.8rem;margin-bottom:24px;">Droit <em>applicable</em></h2>
+      <p class="body-text">Le présent site et ses mentions légales sont soumis au droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="content-wrapper">
+    <h2>Une question ? Contactez-nous <em>directement</em></h2>
+    <p>rykfroid@gmail.com · +33 6 52 59 79 41</p>
+    <div class="cta-actions">
+      <a href="index.html#contact" class="btn-primary">Nous contacter</a>
+      <a href="politique-confidentialite.html" class="btn-outline">Politique de confidentialité</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <a href="index.html"><img src="logo.png" alt="RYKFroid" style="height:44px;" /></a>
+      </div>
+      <p>Votre frigoriste indépendant : dépannage, réparation et entretien d'équipements frigorifiques. 20+ ans d'expérience, intervention rapide, devis gratuit.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="depannage-frigorifique.html">Dépannage frigorifique</a></li>
+        <li><a href="diagnostic-panne.html">Diagnostic &amp; panne</a></li>
+        <li><a href="maintenance-entretien.html">Maintenance &amp; entretien</a></li>
+        <li><a href="installation-materiel.html">Installation matériel</a></li>
+        <li><a href="remplacement-pieces.html">Remplacement pièces</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Légal</h5>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 RYKFroid – Auto-entrepreneur. Tous droits réservés.</p>
+    <p><a href="mentions-legales.html" style="color:rgba(255,255,255,.3);text-decoration:none;">Mentions légales</a> · <a href="politique-confidentialite.html" style="color:rgba(255,255,255,.3);text-decoration:none;">Confidentialité</a> · <a href="espace-pro.html" style="color:rgba(255,255,255,.3);text-decoration:none;">Espace pro</a></p>
+  </div>
+</footer>
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.setAttribute('aria-controls', 'navLinks');
+  burger.setAttribute('aria-expanded', 'false');
+  new MutationObserver(() => burger.setAttribute('aria-expanded', navLinks.classList.contains('open')))
+    .observe(navLinks, { attributes: true, attributeFilter: ['class'] });
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+<script src="extras.js" defer></script>
 </body>
 </html>

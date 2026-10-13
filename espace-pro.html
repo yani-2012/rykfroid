@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Espace pro | RYKFroid</title>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="icon" type="image/png" href="logo.png"/>
+  <link rel="apple-touch-icon" href="logo.png"/>
+  <link rel="stylesheet" href="css.css"/>
+  <style>
+    body { padding: 88px 16px 48px; }
+    .wrap { max-width: 1000px; margin: 0 auto; }
+    h1 { font-family: var(--font-display); font-weight: 400; font-size: 2rem; }
+    h1 em { color: var(--gold); }
+    .muted { color: rgba(255,255,255,.5); font-size: .85rem; }
+    .panel {
+      background: var(--dark-card); border: 1px solid rgba(201,169,110,.15);
+      border-radius: var(--radius-lg); padding: 28px;
+    }
+    input, select, textarea {
+      width: 100%; padding: 11px 14px;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 8px;
+      color: white; font-family: var(--font-body); font-size: .92rem;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
+    select option { background: var(--dark-card); }
+    textarea { resize: vertical; min-height: 64px; }
+    .btn {
+      padding: 10px 16px; border-radius: 8px; cursor: pointer; white-space: nowrap;
+      font-family: var(--font-body); font-size: .88rem; font-weight: 600;
+      border: 1px solid rgba(201,169,110,.4); background: transparent; color: var(--gold);
+    }
+    .btn:hover { background: rgba(201,169,110,.1); }
+    .btn.gold { background: var(--gold); color: var(--charcoal); border-color: var(--gold); }
+    .btn.gold:hover { background: var(--gold-light); }
+    .btn.danger { color: #f87171; border-color: rgba(248,113,113,.35); }
+    .btn:disabled { opacity: .5; cursor: wait; }
+
+    /* Connexion */
+    #login { max-width: 420px; margin: 60px auto 0; }
+    #login h1 { margin-bottom: 6px; }
+    #login form { margin-top: 24px; display: grid; gap: 14px; }
+    .check { display: flex; gap: 10px; align-items: center; font-size: .88rem; color: rgba(255,255,255,.7); }
+    .check input { width: 16px; height: 16px; accent-color: var(--gold); }
+    .err { color: #f87171; font-size: .88rem; min-height: 1.2em; }
+
+    /* Tableau de bord */
+    #app { display: none; }
+    .top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .top-actions { display: flex; gap: 8px; }
+    .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+    .tile {
+      background: var(--dark-card); border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius);
+      padding: 14px 16px; cursor: pointer; text-align: left; color: inherit; font: inherit;
+    }
+    .tile.active { border-color: var(--gold); }
+    .tile b { display: block; font-family: var(--font-body); font-size: 1.6rem; font-weight: 600; color: var(--gold); line-height: 1.2; font-variant-numeric: tabular-nums; }
+    .tile span { font-size: .78rem; color: rgba(255,255,255,.55); }
+    .tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+    .tab { padding: 9px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); background: none; color: rgba(255,255,255,.7); cursor: pointer; font: 500 .88rem var(--font-body); }
+    .tab.active { background: var(--gold); color: var(--charcoal); border-color: var(--gold); }
+    .filters { display: flex; gap: 10px; margin-bottom: 16px; }
+    .filters input { flex: 1; }
+    .filters select { width: 200px; }
+
+    .card {
+      background: var(--dark-card); border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius); padding: 18px 20px; margin-bottom: 10px;
+    }
+    .card-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
+    .card-name { font-weight: 600; font-size: 1.02rem; }
+    .card-meta { font-size: .8rem; color: rgba(255,255,255,.5); margin-top: 2px; }
+    .badge { font-size: .72rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.08); white-space: nowrap; }
+    .badge.Nouveau, .badge.À-vérifier { background: rgba(201,169,110,.18); color: var(--gold-light); }
+    .badge.En-cours { background: rgba(96,165,250,.15); color: #93c5fd; }
+    .badge.Intervention-faite { background: rgba(250,204,21,.13); color: #fde68a; }
+    .badge.Avis-demandé, .badge.Publié { background: rgba(74,222,128,.13); color: #86efac; }
+    .badge.Terminé, .badge.Non-publié { background: rgba(255,255,255,.06); color: rgba(255,255,255,.5); }
+    .contacts { display: flex; gap: 16px; flex-wrap: wrap; margin: 12px 0 8px; font-size: .9rem; }
+    .contacts a { color: var(--gold); text-decoration: none; }
+    .msg { font-size: .9rem; line-height: 1.55; color: rgba(255,255,255,.8); white-space: pre-wrap; margin: 6px 0 12px; }
+    .stars { color: var(--gold); letter-spacing: 2px; }
+    .card-edit { display: grid; grid-template-columns: 200px 1fr; gap: 10px; margin-top: 10px; }
+    .card-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    .empty { text-align: center; padding: 48px 16px; color: rgba(255,255,255,.45); }
+    .toast {
+      position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+      background: var(--gold); color: var(--charcoal); font-weight: 600; font-size: .9rem;
+      padding: 10px 18px; border-radius: 999px; opacity: 0; transition: opacity .25s; pointer-events: none; z-index: 2000;
+    }
+    .toast.show { opacity: 1; }
+    .toast.bad { background: #f87171; color: #111; }
+
+    /* Nouvelle demande arrivée pendant que la page est ouverte */
+    .card.is-new { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,169,110,.15); }
+    .card.is-new .card-name::after { content: 'NOUVEAU'; margin-left: 8px; font-size: .65rem; letter-spacing: 1px; color: var(--gold); vertical-align: middle; }
+
+    /* Rappel de relance */
+    .relance {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+      background: rgba(250,204,21,.08); border: 1px solid rgba(250,204,21,.3); color: #fde68a;
+      border-radius: var(--radius); padding: 12px 16px; margin-bottom: 14px; font-size: .9rem;
+    }
+    .relance[hidden] { display: none; }
+    .card .late { color: #fde68a; font-size: .8rem; margin-top: 4px; }
+
+    /* Statistiques */
+    .stats-kpis { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 14px; }
+    .kpi { background: var(--dark-card); border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding: 14px 16px; }
+    .kpi b { display: block; font-size: 1.5rem; font-weight: 600; color: var(--gold); font-variant-numeric: tabular-nums; }
+    .kpi span { font-size: .78rem; color: rgba(255,255,255,.55); }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .stat-box { background: var(--dark-card); border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding: 18px 20px; }
+    .stat-box.wide { grid-column: 1 / -1; }
+    .stat-box h3 { font-size: .8rem; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.55); font-weight: 500; margin-bottom: 14px; }
+    .months { display: flex; align-items: flex-end; gap: 6px; height: 150px; }
+    .month { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 6px; min-width: 0; }
+    .month i { display: block; width: 100%; max-width: 34px; background: var(--gold); border-radius: 4px 4px 0 0; min-height: 2px; }
+    .month i.zero { background: rgba(255,255,255,.1); }
+    .month b { font-size: .75rem; font-weight: 600; color: rgba(255,255,255,.8); }
+    .month span { font-size: .68rem; color: rgba(255,255,255,.45); white-space: nowrap; }
+    .hbar { display: grid; grid-template-columns: 150px 1fr 34px; align-items: center; gap: 10px; margin-bottom: 8px; font-size: .85rem; }
+    .hbar .track { height: 10px; background: rgba(255,255,255,.06); border-radius: 999px; overflow: hidden; }
+    .hbar .fill { height: 100%; background: var(--gold); border-radius: 999px; }
+    .hbar b { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .hbar span { color: rgba(255,255,255,.75); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    @media (max-width: 700px) {
+      .stats-kpis { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: 1fr; }
+      .hbar { grid-template-columns: 110px 1fr 30px; }
+      .month span { font-size: .6rem; }
+    }
+
+    @media (max-width: 700px) {
+      .tiles { grid-template-columns: repeat(2, 1fr); }
+      .filters { flex-direction: column; }
+      .filters select { width: 100%; }
+      .card-edit { grid-template-columns: 1fr; }
+      .panel { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" href="index.html" aria-label="Accueil RYKFroid">
+    <img src="logo.png" alt="RYKFroid" class="logo-img" />
+  </a>
+</nav>
+
+<!-- Connexion -->
+<main id="login" class="panel">
+  <h1>Espace <em>pro</em></h1>
+  <p class="muted">Demandes de contact et avis clients.</p>
+  <form id="loginForm">
+    <input type="password" id="pwd" placeholder="Mot de passe" autocomplete="current-password" required />
+    <label class="check"><input type="checkbox" id="remember" /> Rester connecté sur cet appareil</label>
+    <button class="btn gold" type="submit" id="loginBtn">Se connecter</button>
+    <div class="err" id="loginErr" role="alert"></div>
+  </form>
+</main>
+
+<!-- Tableau de bord -->
+<div id="app" class="wrap">
+  <div class="top">
+    <div>
+      <h1>Espace <em>pro</em></h1>
+      <div class="muted" id="lastSync"></div>
+    </div>
+    <div class="top-actions">
+      <button class="btn" id="refreshBtn" type="button">Actualiser</button>
+      <a class="btn" href="demande-avis.html" style="text-decoration:none">Demande d'avis</a>
+      <button class="btn danger" id="logoutBtn" type="button">Déconnexion</button>
+    </div>
+  </div>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-tab="demandes" type="button" role="tab">Demandes</button>
+    <button class="tab" data-tab="avis" type="button" role="tab">Avis</button>
+    <button class="tab" data-tab="stats" type="button" role="tab">Statistiques</button>
+  </div>
+
+  <div class="relance" id="relance" hidden></div>
+
+  <div class="filters" id="filters">
+    <input type="search" id="search" placeholder="Rechercher un nom, un téléphone, un e-mail, un mot…" />
+    <select id="statusFilter"></select>
+  </div>
+
+  <div id="list"></div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="config.js"></script>
+<script>
+  const API = window.RYK_API;
+  const STATUTS = {
+    demandes: ['Nouveau', 'En cours', 'Intervention faite', 'Avis demandé', 'Terminé'],
+    avis: ['À vérifier', 'Publié', 'Non publié']
+  };
+  const TYPES = {
+    'frigo-pro': 'Réfrigération professionnelle', 'vitrine': 'Vitrine réfrigérée',
+    'armoire': 'Armoire frigorifique', 'chambre-froide': 'Chambre froide', 'autre': 'Autre'
+  };
+  const state = { key: '', data: { demandes: [], avis: [] }, tab: 'demandes', status: '', q: '', knownIds: null, newIds: new Set() };
+  const RELANCE_JOURS = 3;
+  const REFRESH_MS = 60000;
+  const $ = id => document.getElementById(id);
+
+  // ---------- stockage du mot de passe (pratique, pas indispensable) ----------
+  const store = {
+    get() { try { return sessionStorage.getItem('ryk_key') || localStorage.getItem('ryk_key') || ''; } catch (e) { return ''; } },
+    set(k, remember) { try { (remember ? localStorage : sessionStorage).setItem('ryk_key', k); } catch (e) {} },
+    clear() { try { sessionStorage.removeItem('ryk_key'); localStorage.removeItem('ryk_key'); } catch (e) {} }
+  };
+
+  async function api(payload) {
+    if (!API) throw new Error('config');
+    const res = await fetch(API, { method: 'POST', body: JSON.stringify({ ...payload, key: state.key }) });
+    const json = await res.json();
+    if (!json.ok) throw new Error(json.error || 'erreur');
+    return json;
+  }
+
+  function toast(text, bad) {
+    const t = $('toast');
+    t.textContent = text;
+    t.classList.toggle('bad', !!bad);
+    t.classList.add('show');
+    clearTimeout(toast.timer);
+    toast.timer = setTimeout(() => t.classList.remove('show'), 2400);
+  }
+
+  // Les valeurs viennent de formulaires publics : on construit le DOM sans jamais injecter de HTML
+  function el(tag, props = {}, children = []) {
+    const node = document.createElement(tag);
+    Object.entries(props).forEach(([k, v]) => {
+      if (k === 'text') node.textContent = v;
+      else if (k === 'class') node.className = v;
+      else if (k.startsWith('on')) node.addEventListener(k.slice(2), v);
+      else node.setAttribute(k, v);
+    });
+    [].concat(children).forEach(c => c && node.append(c));
+    return node;
+  }
+  const plain = v => String(v || '').replace(/^'/, '');
+
+  // ---------- connexion ----------
+  async function load(silent) {
+    const btn = $('refreshBtn');
+    btn.disabled = true;
+    try {
+      const json = await api({ action: 'list' });
+      state.data = { demandes: json.demandes || [], avis: json.avis || [] };
+      detectNew();
+      $('login').style.display = 'none';
+      $('app').style.display = 'block';
+      $('lastSync').textContent = 'Mis à jour à ' + new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+      render();
+      if (!silent) toast('Données à jour');
+      return true;
+    } catch (e) {
+      if (e.message === 'auth') { store.clear(); showLogin('Mot de passe incorrect.'); }
+      else if (e.message === 'config') showLogin("Le site n'est pas encore relié à Google (fichier config.js vide).");
+      else toast('Connexion impossible, réessaie.', true);
+      return false;
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  // Repère les fiches arrivées depuis le dernier chargement
+  function detectNew() {
+    const all = [...state.data.demandes.map(d => ['demande', d.id]), ...state.data.avis.map(a => ['avis', a.id])];
+    const ids = new Set(all.map(([, id]) => id));
+    if (state.knownIds) {
+      const fresh = all.filter(([, id]) => !state.knownIds.has(id));
+      fresh.forEach(([, id]) => state.newIds.add(id));
+      const nd = fresh.filter(([k]) => k === 'demande').length, na = fresh.length - nd;
+      const parts = [];
+      if (nd) parts.push(nd + (nd > 1 ? ' nouvelles demandes' : ' nouvelle demande'));
+      if (na) parts.push(na + (na > 1 ? ' nouveaux avis' : ' nouvel avis'));
+      if (parts.length) toast('🔔 ' + parts.join(' et '));
+    }
+    state.knownIds = ids;
+    updateTitle();
+  }
+
+  function updateTitle() {
+    const n = state.data.demandes.filter(d => d.statut === 'Nouveau').length;
+    document.title = (n ? '(' + n + ') ' : '') + 'Espace pro | RYKFroid';
+  }
+
+  // Actualisation automatique, sauf pendant qu'on écrit une note ou qu'on change un statut
+  const isEditing = () => {
+    const a = document.activeElement;
+    return a && $('list').contains(a) && /^(TEXTAREA|SELECT|INPUT)$/.test(a.tagName);
+  };
+  const canAutoRefresh = () => state.key && $('app').style.display === 'block'
+    && document.visibilityState === 'visible' && !isEditing();
+  setInterval(() => { if (canAutoRefresh()) load(true); }, REFRESH_MS);
+  document.addEventListener('visibilitychange', () => { if (canAutoRefresh()) load(true); });
+
+  function showLogin(msg) {
+    $('app').style.display = 'none';
+    $('login').style.display = 'block';
+    $('loginErr').textContent = msg || '';
+  }
+
+  $('loginForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    state.key = $('pwd').value;
+    $('loginBtn').disabled = true;
+    $('loginErr').textContent = '';
+    if (await load(true)) store.set(state.key, $('remember').checked);
+    $('loginBtn').disabled = false;
+  });
+
+  $('logoutBtn').addEventListener('click', () => {
+    store.clear();
+    state.key = '';
+    $('pwd').value = '';
+    showLogin();
+  });
+  $('refreshBtn').addEventListener('click', () => load());
+
+  // ---------- filtres ----------
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    state.tab = t.dataset.tab;
+    state.status = '';
+    document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x === t));
+    render();
+  }));
+  $('search').addEventListener('input', e => { state.q = e.target.value.trim().toLowerCase(); renderList(); });
+  $('statusFilter').addEventListener('change', e => { state.status = e.target.value; render(); });
+
+  function render() {
+    const isStats = state.tab === 'stats';
+    $('tiles').style.display = isStats ? 'none' : '';
+    $('filters').style.display = isStats ? 'none' : '';
+    renderRelance();
+    if (isStats) { renderStats(); return; }
+    const items = state.data[state.tab];
+    const counts = Object.fromEntries(STATUTS[state.tab].map(s => [s, items.filter(i => i.statut === s).length]));
+
+    // Tuiles : un clic filtre la liste
+    const tiles = state.tab === 'demandes'
+      ? [['', 'Toutes', items.length], ['Nouveau', 'Nouvelles', counts['Nouveau']],
+         ['Intervention faite', 'Avis à demander', counts['Intervention faite']], ['Avis demandé', 'Avis demandés', counts['Avis demandé']]]
+      : [['', 'Tous les avis', items.length], ['À vérifier', 'À vérifier', counts['À vérifier']],
+         ['Publié', 'Publiés', counts['Publié']], ['Non publié', 'Non publiés', counts['Non publié']]];
+    $('tiles').replaceChildren(...tiles.map(([status, label, n]) =>
+      el('button', { class: 'tile' + (state.status === status ? ' active' : ''), type: 'button',
+        onclick: () => { state.status = status; render(); } }, [el('b', { text: String(n) }), el('span', { text: label })])));
+
+    const late = state.data.demandes.filter(isLate).length;
+    $('statusFilter').replaceChildren(
+      el('option', { value: '', text: 'Tous les statuts' }),
+      ...STATUTS[state.tab].map(s => el('option', { value: s, text: `${s} (${counts[s]})` })),
+      ...(state.tab === 'demandes' ? [el('option', { value: '__relance', text: `⏰ À relancer (${late})` })] : []));
+    $('statusFilter').value = state.status;
+    renderList();
+  }
+
+  function renderList() {
+    const items = state.data[state.tab]
+      .filter(i => !state.status || (state.status === '__relance' ? isLate(i) : i.statut === state.status))
+      .filter(i => !state.q || Object.values(i).join(' ').toLowerCase().includes(state.q));
+    $('list').replaceChildren(...(items.length
+      ? items.map(state.tab === 'demandes' ? demandeCard : avisCard)
+      : [el('div', { class: 'empty', text: state.data[state.tab].length ? 'Aucun résultat.' : 'Rien pour le moment.' })]));
+  }
+
+  // ---------- relances : intervention faite depuis 3 jours ou plus, avis pas encore demandé ----------
+  function daysSince(value) {
+    const m = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!m) return 0;
+    const then = new Date(+m[1], m[2] - 1, +m[3]);
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    return Math.round((today - then) / 864e5);
+  }
+  const interventionDate = d => d.intervention_le || d.date;
+  const isLate = d => d.statut === 'Intervention faite' && daysSince(interventionDate(d)) >= RELANCE_JOURS;
+  const todayISO = () => {
+    const t = new Date();
+    return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+  };
+
+  function renderRelance() {
+    const box = $('relance');
+    const late = state.data.demandes.filter(isLate);
+    if (state.tab !== 'demandes' || !late.length) { box.hidden = true; return; }
+    box.hidden = false;
+    box.replaceChildren(
+      el('span', { text: `⏰ ${late.length} client${late.length > 1 ? 's' : ''} à relancer : intervention faite depuis ${RELANCE_JOURS} jours ou plus, avis pas encore demandé.` }),
+      el('button', { class: 'btn', type: 'button', text: state.status === '__relance' ? 'Tout afficher' : 'Voir',
+        onclick: () => { state.status = state.status === '__relance' ? '' : '__relance'; render(); } }));
+  }
+
+  // ---------- statistiques ----------
+  function renderStats() {
+    const D = state.data.demandes, A = state.data.avis;
+    const now = new Date();
+    const monthKey = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+    const thisMonth = monthKey(now);
+    const asked = D.filter(d => d.avis_demande_le).length;
+    const notes = A.map(a => Number(a.note)).filter(n => n >= 1 && n <= 5);
+    const avg = notes.length ? (notes.reduce((x, y) => x + y, 0) / notes.length) : 0;
+
+    const kpi = (value, label) => el('div', { class: 'kpi' }, [el('b', { text: value }), el('span', { text: label })]);
+    const kpis = el('div', { class: 'stats-kpis' }, [
+      kpi(String(D.length), 'Demandes au total'),
+      kpi(String(D.filter(d => d.date.startsWith(thisMonth)).length), 'Demandes ce mois-ci'),
+      kpi(String(A.length), 'Avis reçus'),
+      kpi(notes.length ? avg.toFixed(1).replace('.', ',') + ' ★' : '–', 'Note moyenne'),
+      kpi(asked ? Math.round(Math.min(A.length / asked, 1) * 100) + ' %' : '–', 'Avis reçus / demandés')
+    ]);
+
+    // Demandes sur les 12 derniers mois
+    const months = [];
+    for (let i = 11; i >= 0; i--) {
+      const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      months.push({ key: monthKey(d), label: d.toLocaleDateString('fr-FR', { month: 'short' }).replace('.', '') });
+    }
+    months.forEach(m => { m.n = D.filter(d => d.date.startsWith(m.key)).length; });
+    const max = Math.max(1, ...months.map(m => m.n));
+    const chart = el('div', { class: 'months', role: 'img', 'aria-label': 'Demandes par mois sur 12 mois' },
+      months.map(m => el('div', { class: 'month', title: `${m.label} : ${m.n} demande(s)` }, [
+        el('b', { text: m.n ? String(m.n) : '' }),
+        el('i', { class: m.n ? '' : 'zero', style: `height:${Math.max(2, m.n / max * 100)}%` }),
+        el('span', { text: m.label })
+      ])));
+
+    const bars = (pairs) => {
+      const top = Math.max(1, ...pairs.map(([, n]) => n));
+      return pairs.length ? pairs.map(([label, n]) => el('div', { class: 'hbar' }, [
+        el('span', { text: label, title: label }),
+        el('div', { class: 'track' }, [el('div', { class: 'fill', style: `width:${n / top * 100}%` })]),
+        el('b', { text: String(n) })
+      ])) : [el('p', { class: 'muted', text: 'Pas encore de données.' })];
+    };
+    const countBy = (items, keyFn) => {
+      const map = new Map();
+      items.forEach(i => { const k = keyFn(i); map.set(k, (map.get(k) || 0) + 1); });
+      return [...map.entries()].sort((a, b) => b[1] - a[1]);
+    };
+
+    const box = (title, children, wide) => el('div', { class: 'stat-box' + (wide ? ' wide' : '') }, [el('h3', { text: title }), ...[].concat(children)]);
+    $('list').replaceChildren(kpis, el('div', { class: 'stats-grid' }, [
+      box('Demandes par mois', chart, true),
+      box("Types d'équipement", bars(countBy(D, d => TYPES[d.type] || plain(d.type) || 'Non précisé'))),
+      box('Suivi des demandes', bars(STATUTS.demandes.map(s => [s, D.filter(d => d.statut === s).length]))),
+      box('Notes des avis', bars([5, 4, 3, 2, 1].map(n => ['★'.repeat(n), notes.filter(x => x === n).length]))),
+      box("Interventions (avis)", bars(countBy(A, a => plain(a.intervention) || 'Non précisé')))
+    ]));
+  }
+
+  function statusSelect(sheet, item) {
+    const select = el('select', { 'aria-label': 'Statut' },
+      STATUTS[sheet === 'Demandes' ? 'demandes' : 'avis'].map(s => el('option', { value: s, text: s })));
+    select.value = item.statut;
+    select.addEventListener('change', () => {
+      const fields = { statut: select.value };
+      // On note le jour de l'intervention pour savoir quand relancer
+      if (sheet === 'Demandes' && select.value === 'Intervention faite') fields.intervention_le = todayISO();
+      save(sheet, item, fields);
+    });
+    return select;
+  }
+
+  function demandeCard(d) {
+    const tel = plain(d.telephone), mail = plain(d.email);
+    const notes = el('textarea', { placeholder: 'Notes (adresse, devis, date de passage…)', 'aria-label': 'Notes' });
+    notes.value = plain(d.notes);
+    notes.addEventListener('change', () => save('Demandes', d, { notes: notes.value }));
+
+    return el('article', { class: 'card' + (state.newIds.has(d.id) ? ' is-new' : ''), onclick: () => seen(d) }, [
+      el('div', { class: 'card-head' }, [
+        el('div', {}, [
+          el('div', { class: 'card-name', text: plain(d.nom) || 'Sans nom' }),
+          el('div', { class: 'card-meta', text: [d.date, TYPES[d.type] || plain(d.type), plain(d.modele)].filter(Boolean).join(' · ') })
+        ]),
+        el('span', { class: 'badge ' + d.statut.replace(/ /g, '-'), text: d.statut })
+      ]),
+      el('div', { class: 'contacts' }, [
+        tel && el('a', { href: 'tel:' + tel.replace(/[^\d+]/g, ''), text: '☎ ' + tel }),
+        mail && el('a', { href: 'mailto:' + mail, text: '✉ ' + mail })
+      ]),
+      d.message && el('p', { class: 'msg', text: plain(d.message) }),
+      d.intervention_le && el('div', { class: 'card-meta', text: 'Intervention le ' + d.intervention_le.split('-').reverse().join('/') }),
+      d.avis_demande_le && el('div', { class: 'card-meta', text: 'Avis demandé le ' + d.avis_demande_le }),
+      isLate(d) && el('div', { class: 'late', text: `⏰ Intervention faite il y a ${daysSince(interventionDate(d))} jours : pense à demander un avis.` }),
+      el('div', { class: 'card-edit' }, [statusSelect('Demandes', d), notes]),
+      el('div', { class: 'card-actions' }, [
+        el('button', { class: 'btn gold', type: 'button', text: "Demander un avis", onclick: () => askReview(d) }),
+        el('button', { class: 'btn danger', type: 'button', text: 'Supprimer', onclick: () => remove('Demandes', d) })
+      ])
+    ]);
+  }
+
+  function avisCard(a) {
+    const n = Number(a.note) || 0;
+    return el('article', { class: 'card' + (state.newIds.has(a.id) ? ' is-new' : ''), onclick: () => seen(a) }, [
+      el('div', { class: 'card-head' }, [
+        el('div', {}, [
+          el('div', { class: 'card-name', text: plain(a.nom) }),
+          el('div', { class: 'card-meta', text: [a.date, plain(a.profil), plain(a.intervention)].filter(Boolean).join(' · ') })
+        ]),
+        el('span', { class: 'badge ' + a.statut.replace(/ /g, '-'), text: a.statut })
+      ]),
+      el('div', { class: 'stars', text: '★'.repeat(n) + '☆'.repeat(5 - n), 'aria-label': n + ' étoiles sur 5' }),
+      el('p', { class: 'msg', text: plain(a.commentaire) }),
+      el('div', { class: 'card-meta', text: a.publication === 'Oui' ? '✔ Accepte la publication sur le site' : '✖ Ne souhaite pas être publié' }),
+      el('div', { class: 'card-edit' }, [statusSelect('Avis', a), el('span')]),
+      el('div', { class: 'card-actions' }, [
+        el('button', { class: 'btn', type: 'button', text: 'Copier l’avis', onclick: () => copyAvis(a) }),
+        el('button', { class: 'btn danger', type: 'button', text: 'Supprimer', onclick: () => remove('Avis', a) })
+      ])
+    ]);
+  }
+
+  // ---------- actions ----------
+  // Un clic sur une fiche nouvelle retire la mise en avant
+  function seen(item) {
+    if (!state.newIds.delete(item.id)) return;
+    document.querySelectorAll('.card.is-new').forEach(c => {
+      if (c.contains(document.activeElement) || c.matches(':hover')) c.classList.remove('is-new');
+    });
+  }
+
+  async function save(sheet, item, fields) {
+    try {
+      await api({ action: 'update', sheet, id: item.id, fields });
+      Object.assign(item, fields);
+      render();
+      updateTitle();
+      toast('Enregistré');
+    } catch (e) {
+      toast("Échec de l'enregistrement", true);
+      if (e.message === 'auth') showLogin('Session expirée, reconnecte-toi.');
+    }
+  }
+
+  async function remove(sheet, item) {
+    if (!confirm('Supprimer définitivement cette fiche ? Elle sera aussi effacée du Google Sheet.')) return;
+    try {
+      await api({ action: 'delete', sheet, id: item.id });
+      const key = sheet === 'Demandes' ? 'demandes' : 'avis';
+      state.data[key] = state.data[key].filter(i => i.id !== item.id);
+      render();
+      toast('Supprimé');
+    } catch (e) {
+      toast('Échec de la suppression', true);
+    }
+  }
+
+  async function askReview(d) {
+    if (!plain(d.email) && !confirm("Ce client n'a pas laissé d'e-mail. Continuer pour lui envoyer la demande par SMS ?")) return;
+    const today = new Date().toLocaleDateString('fr-FR');
+    await save('Demandes', d, { statut: 'Avis demandé', avis_demande_le: today });
+    // Les coordonnées passent par la mémoire de l'onglet, jamais par l'adresse de la page
+    try {
+      sessionStorage.setItem('ryk_prefill', JSON.stringify({
+        prenom: plain(d.nom).split(/\s+/)[0] || '',
+        email: plain(d.email),
+        telephone: plain(d.telephone)
+      }));
+    } catch (e) {}
+    location.href = 'demande-avis.html';
+  }
+
+  async function copyAvis(a) {
+    const text = `${'★'.repeat(Number(a.note) || 0)} — ${plain(a.commentaire)}\n${plain(a.nom)} · ${plain(a.profil)} · ${plain(a.intervention)} · ${a.date.slice(0, 10)}`;
+    try { await navigator.clipboard.writeText(text); toast('Avis copié'); }
+    catch (e) { toast('Copie impossible', true); }
+  }
+
+  // ---------- démarrage ----------
+  state.key = store.get();
+  if (state.key) load(true); else showLogin();
+</script>
+</body>
+</html>

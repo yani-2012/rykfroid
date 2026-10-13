@@ -1,0 +1,94 @@
+/* ============================================================
+   RYKFROID – Animations, boutons flottants et formulaire (extras.js)
+============================================================ */
+
+/* ── Apparition décalée des cartes ── */
+.reveal.stagger { opacity: 1; transform: none; }
+.st-item { opacity: 0; transform: translateY(24px); }
+.stagger.st-go .st-item { animation: st-in .6s ease var(--st-delay, 0ms) both; }
+@keyframes st-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Compteurs ── */
+.hero-stat-number { font-variant-numeric: tabular-nums; }
+
+/* ── Formulaire : champ en erreur ── */
+.field-error,
+.form-group .field-error { border-color: #f87171 !important; box-shadow: 0 0 0 3px rgba(248,113,113,.12) !important; }
+
+/* ── Bulle WhatsApp (ordinateur) ── */
+.wa-float {
+  position: fixed; right: 24px; bottom: 24px; z-index: 1500;
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: #25D366; color: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  opacity: 0; transform: translateY(20px) scale(.9); pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+}
+.wa-float.show { opacity: 1; transform: none; pointer-events: auto; }
+.wa-float svg { width: 28px; height: 28px; }
+.wa-tip {
+  position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+  white-space: nowrap; padding: 8px 12px; border-radius: 8px;
+  background: #fff; color: #111318; font: 500 .85rem 'DM Sans', system-ui, sans-serif;
+  box-shadow: 0 6px 18px rgba(0,0,0,.3);
+  opacity: 0; pointer-events: none; transition: opacity .2s ease;
+}
+.wa-float:hover .wa-tip, .wa-float:focus-visible .wa-tip { opacity: 1; }
+
+/* ── Retour en haut ── */
+.to-top {
+  position: fixed; right: 30px; bottom: 92px; z-index: 1500;
+  width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(24,28,36,.92); color: var(--gold, #C9A96E);
+  border: 1px solid rgba(201,169,110,.35);
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  opacity: 0; transform: translateY(12px); pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease, bottom .3s ease;
+}
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { border-color: var(--gold, #C9A96E); }
+
+/* ── Barre Appeler + WhatsApp (mobile) ── */
+.call-bar { display: none; }
+
+@media (max-width: 768px) {
+  .wa-float { display: none; }
+
+  .call-bar {
+    position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 1500;
+    display: flex; gap: 8px;
+    transform: translateY(140%);
+    transition: transform .35s ease;
+  }
+  .call-bar.show { transform: translateY(0); }
+  .call-bar a {
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 14px; text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,.45);
+  }
+  .call-main {
+    flex: 1; gap: 10px; padding: 15px 18px;
+    background: var(--gold, #C9A96E); color: #111318;
+    font-family: 'DM Sans', system-ui, sans-serif; font-weight: 600; font-size: 1rem;
+  }
+  .call-main small { font-weight: 500; opacity: .75; }
+  .call-main svg { flex-shrink: 0; }
+  .call-wa { width: 56px; flex-shrink: 0; background: #25D366; color: #fff; }
+
+  .to-top { right: 16px; bottom: 16px; }
+  .to-top.above-bar { bottom: 84px; }
+
+  /* Laisse la place à la barre en bas de page */
+  body.has-call-bar footer { padding-bottom: 88px; }
+}
+
+/* ── Visiteurs qui ont demandé moins d'animations ── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .st-item { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
+  .call-bar, .wa-float, .to-top { transition: none; }
+}

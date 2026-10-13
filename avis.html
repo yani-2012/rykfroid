@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donnez votre avis | RYKFroid</title>
+  <meta name="description" content="Partagez votre avis sur l'intervention RYKFroid."/>
+  <meta name="robots" content="noindex, follow"/>
+  <link rel="icon" type="image/png" href="logo.png"/>
+  <link rel="apple-touch-icon" href="logo.png"/>
+  <link rel="stylesheet" href="css.css"/>
+  <style>
+    .review-card {
+      max-width: 640px; margin: 0 auto;
+      background: var(--dark-card);
+      border: 1px solid rgba(201,169,110,.15);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+    }
+    .form-group { margin-bottom: 22px; }
+    .form-group > label, .form-legend {
+      display: block; margin-bottom: 8px;
+      font-size: .78rem; letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,.55); font-weight: 500;
+    }
+    .form-group input[type=text], .form-group select, .form-group textarea {
+      width: 100%; padding: 14px 18px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1); border-radius: 8px;
+      color: white; font-family: var(--font-body); font-size: .95rem;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,169,110,.1);
+    }
+    .form-group select option { background: var(--dark-card); }
+    .form-group textarea { resize: vertical; min-height: 140px; }
+    fieldset { border: 0; padding: 0; margin: 0; }
+
+    /* Étoiles : les boutons radio sont inversés pour colorer les étoiles précédentes au survol */
+    .stars-input { display: inline-flex; flex-direction: row-reverse; gap: 4px; }
+    .stars-input input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .stars-input label {
+      font-size: 2.2rem; line-height: 1; cursor: pointer;
+      color: rgba(255,255,255,.18); transition: color .15s, transform .15s;
+    }
+    .stars-input label:hover,
+    .stars-input label:hover ~ label,
+    .stars-input input:checked ~ label { color: var(--gold); }
+    .stars-input input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+    .stars-input label:active { transform: scale(.9); }
+
+    .consent { display: flex; gap: 12px; align-items: flex-start; font-size: .9rem; color: rgba(255,255,255,.75); line-height: 1.5; cursor: pointer; }
+    .consent input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--gold); flex-shrink: 0; }
+
+    .form-submit {
+      width: 100%; padding: 16px; border: none; border-radius: 8px; cursor: pointer;
+      background: var(--gold); color: var(--charcoal);
+      font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+      transition: background .3s;
+    }
+    .form-submit:hover { background: var(--gold-light); }
+    .form-submit:disabled { opacity: .6; cursor: wait; }
+    .form-note { margin-top: 16px; font-size: .8rem; color: rgba(255,255,255,.45); text-align: center; line-height: 1.5; }
+    .form-note a { color: var(--gold); }
+    .msg { display: none; text-align: center; padding: 20px; border-radius: 8px; margin-bottom: 16px; font-size: .95rem; }
+    .msg-ok { background: rgba(74,222,128,.1); border: 1px solid rgba(74,222,128,.3); color: #4ade80; }
+    .msg-err { background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.3); color: #f87171; }
+    .hp { position: absolute; left: -9999px; }
+    @media (max-width: 600px) { .review-card { padding: 28px 18px; } }
+  </style>
+  <link rel="stylesheet" href="extras.css"/>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" href="index.html" aria-label="Accueil RYKFroid">
+    <img src="logo.png" alt="RYKFroid" class="logo-img" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Devis gratuit</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false" type="button">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <nav class="page-breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span>/</span>
+      <span>Votre avis</span>
+    </nav>
+    <div class="page-hero-label">Merci pour votre confiance</div>
+    <h1>Votre avis <em>compte</em></h1>
+    <p class="page-hero-sub">Quelques mots sur notre intervention nous aident à progresser et guident les futurs clients. Cela prend moins de deux minutes.</p>
+  </div>
+</header>
+
+<section class="content-section dark-bg">
+  <div class="content-wrapper">
+    <div class="review-card">
+      <div class="msg msg-ok" id="msgOk" role="status">
+        Merci pour votre avis ! Il a bien été envoyé.
+      </div>
+      <div class="msg msg-err" id="msgErr" role="alert"></div>
+
+      <form id="reviewForm" novalidate>
+        <input type="hidden" name="_subject" value="Nouvel avis client – RYKFroid" />
+        <input type="hidden" name="formulaire" value="Avis client" />
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <fieldset class="form-group">
+          <legend class="form-legend">Votre note *</legend>
+          <div class="stars-input">
+            <input type="radio" id="note5" name="note" value="5" required /><label for="note5" title="5 étoiles – Excellent">★</label>
+            <input type="radio" id="note4" name="note" value="4" /><label for="note4" title="4 étoiles – Très bien">★</label>
+            <input type="radio" id="note3" name="note" value="3" /><label for="note3" title="3 étoiles – Correct">★</label>
+            <input type="radio" id="note2" name="note" value="2" /><label for="note2" title="2 étoiles – Décevant">★</label>
+            <input type="radio" id="note1" name="note" value="1" /><label for="note1" title="1 étoile – Mauvais">★</label>
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="nom">Prénom et initiale du nom *</label>
+          <input type="text" id="nom" name="nom" placeholder="Ex : Jean D." maxlength="60" required />
+        </div>
+
+        <div class="form-group">
+          <label for="profil">Vous êtes *</label>
+          <select id="profil" name="profil" required>
+            <option value="">Sélectionner…</option>
+            <option>Particulier</option>
+            <option>Restaurateur</option>
+            <option>Commerçant</option>
+            <option>Autre professionnel</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="intervention">Type d'intervention *</label>
+          <select id="intervention" name="intervention" required>
+            <option value="">Sélectionner…</option>
+            <option>Dépannage</option>
+            <option>Diagnostic de panne</option>
+            <option>Maintenance / entretien</option>
+            <option>Installation</option>
+            <option>Remplacement de pièces</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="commentaire">Votre avis *</label>
+          <textarea id="commentaire" name="commentaire" maxlength="1500" placeholder="Comment s'est passée l'intervention ? Délai, explications, résultat…" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="consent">
+            <input type="checkbox" name="publication" value="Accepte la publication" />
+            <span>J'accepte que mon avis soit publié sur rykfroid.fr, avec seulement mon prénom et l'initiale de mon nom.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="form-submit" id="submitBtn">Envoyer mon avis</button>
+        <p class="form-note">
+          Vos informations servent uniquement à recueillir votre avis.
+          <a href="politique-confidentialite.html">En savoir plus</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <a href="index.html"><img src="logo.png" alt="RYKFroid" style="height:44px;" /></a>
+      </div>
+      <p>Votre frigoriste indépendant : dépannage, réparation et entretien d'équipements frigorifiques. 20+ ans d'expérience, intervention rapide, devis gratuit.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="depannage-frigorifique.html">Dépannage frigorifique</a></li>
+        <li><a href="diagnostic-panne.html">Diagnostic &amp; panne</a></li>
+        <li><a href="maintenance-entretien.html">Maintenance &amp; entretien</a></li>
+        <li><a href="installation-materiel.html">Installation matériel</a></li>
+        <li><a href="remplacement-pieces.html">Remplacement pièces</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Légal</h5>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 RYKFroid – Auto-entrepreneur. Tous droits réservés.</p>
+    <p><a href="mentions-legales.html" style="color:rgba(255,255,255,.3);text-decoration:none;">Mentions légales</a> · <a href="politique-confidentialite.html" style="color:rgba(255,255,255,.3);text-decoration:none;">Confidentialité</a> · <a href="espace-pro.html" style="color:rgba(255,255,255,.3);text-decoration:none;">Espace pro</a></p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => burger.setAttribute('aria-expanded', navLinks.classList.toggle('open')));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Pré-remplit le type d'intervention si le lien reçu par e-mail le précise (?intervention=Dépannage)
+  const preset = new URLSearchParams(location.search).get('intervention');
+  if (preset) {
+    const select = document.getElementById('intervention');
+    if ([...select.options].some(o => o.value === preset)) select.value = preset;
+  }
+
+  const form = document.getElementById('reviewForm');
+  const msgOk = document.getElementById('msgOk');
+  const msgErr = document.getElementById('msgErr');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    msgOk.style.display = 'none';
+    msgErr.style.display = 'none';
+
+    if (!form.checkValidity()) {
+      if (!form.querySelector('input[name=note]:checked')) {
+        msgErr.textContent = 'Merci de choisir une note de 1 à 5 étoiles.';
+        msgErr.style.display = 'block';
+        msgErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      form.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+    try {
+      // Envoi en parallèle : e-mail (Formspree) + base de données (Google Sheet de l'espace pro)
+      const formData = new FormData(form);
+      const [mail, db] = await Promise.allSettled([
+        fetch('https://formspree.io/f/xkoyjqpj', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        }).then(r => r.ok),
+        window.RYK_API
+          ? fetch(window.RYK_API, {
+              method: 'POST',
+              body: JSON.stringify({ action: 'avis', ...Object.fromEntries(formData) })
+            }).then(r => r.json()).then(j => j.ok)
+          : Promise.resolve(false)
+      ]);
+      if ((mail.status === 'fulfilled' && mail.value) || (db.status === 'fulfilled' && db.value)) {
+        form.style.display = 'none';
+        msgOk.style.display = 'block';
+        msgOk.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        msgErr.textContent = "Erreur lors de l'envoi. Veuillez réessayer.";
+        msgErr.style.display = 'block';
+      }
+    } catch (err) {
+      msgErr.textContent = "Impossible d'envoyer votre avis. Vérifiez votre connexion.";
+      msgErr.style.display = 'block';
+    }
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Envoyer mon avis';
+  });
+</script>
+<script src="extras.js" defer></script>
+</body>
+</html>

@@ -1,65 +1,250 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RYKFroid – Site en maintenance</title>
-  <meta name="description" content="Le site RYKFroid est temporairement en maintenance. Il sera de retour très prochainement." />
-  <link rel="icon" href="/logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --gold: #C9A96E;
-      --gold-light: #E2C99A;
-      --charcoal: #111318;
-      --dark-card: #232838;
-      --white: #FEFEFE;
-    }
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      padding: 32px 16px;
-      font-family: 'DM Sans', system-ui, sans-serif;
-      color: var(--white);
-      background:
-        radial-gradient(ellipse at top, rgba(107,31,42,.35), transparent 60%),
-        var(--charcoal);
-      text-align: center;
-    }
-    .box {
-      max-width: 560px; width: 100%;
-      padding: 48px 32px;
-      background: rgba(35,40,56,.55);
-      border: 1px solid rgba(201,169,110,.2);
-      border-radius: 20px;
-      box-shadow: 0 0 40px rgba(201,169,110,.12);
-    }
-    .logo { display: block; width: 120px; height: auto; margin: 0 auto 28px; }
-    .tag {
-      display: block; margin-bottom: 18px; padding-left: .2em;
-      font-size: .75rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--gold);
-    }
-    h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400; font-size: clamp(2rem, 6vw, 2.8rem); line-height: 1.15;
-      margin-bottom: 18px;
-    }
-    h1 em { color: var(--gold-light); font-style: italic; }
-    p { font-weight: 300; line-height: 1.7; color: rgba(254,254,254,.75); }
-    .line { width: 60px; height: 1px; background: var(--gold); margin: 28px auto 0; opacity: .6; }
-  </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Remplacement de pièces frigorifiques | RYKFroid</title>
+  <meta name="description" content="Remplacement de pièces frigorifiques : compresseurs, sondes, thermostats, cartes électroniques, ventilateurs et joints. Pièces garanties."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://www.rykfroid.fr/remplacement-pieces.html"/>
+  <link rel="stylesheet" href="css.css"/>
+  <link rel="icon" type="image/png" href="logo.png"/>
+  <link rel="apple-touch-icon" href="logo.png"/>
+  <link rel="stylesheet" href="extras.css"/>
 </head>
+
 <body>
-  <main class="box">
-    <img class="logo" src="/logo.png" alt="RYKFroid" />
-    <span class="tag">Maintenance en cours</span>
-    <h1>Notre site fait peau <em>neuve</em></h1>
-    <p>Nous apportons quelques améliorations à notre site.<br />Il sera de retour très prochainement. Merci de votre patience.</p>
-    <div class="line"></div>
-  </main>
+
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" href="index.html" aria-label="Accueil RYKFroid">
+    <img src="logo.png" alt="RYKFroid" class="logo-img" />
+  </a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#equipements">Équipements</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Devis gratuit</a></li>
+  </ul>
+
+  <button class="burger" id="burger" aria-label="Ouvrir le menu" type="button">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <nav class="page-breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span>/</span>
+      <span>Remplacement de pièces</span>
+    </nav>
+
+    <div class="page-hero-label">Remplacement de pièces</div>
+
+    <h1>Remplacement de <em>pièces</em><br>détachées</h1>
+
+    <p class="page-hero-sub">
+      Pièces adaptées ou équivalents techniques de qualité professionnelle. Remplacement soigné, diagnostic précis et garantie indiquée selon la pièce posée.
+    </p>
+  </div>
+</header>
+
+<section class="content-section dark-bg">
+  <div class="content-wrapper">
+    <div class="content-grid reveal">
+      <div>
+        <div class="section-label">Pièces de qualité</div>
+
+        <h2 class="section-title">
+          Remplacement de <em>pièces</em> détachées
+        </h2>
+
+        <p class="body-text">
+          La qualité d'une réparation dépend en grande partie de la qualité des pièces utilisées. Chez RYKFroid, nous privilégions des <strong>pièces adaptées ou des équivalents techniques de qualité professionnelle</strong>, sélectionnés selon le type d’équipement et la panne constatée.
+        </p>
+
+        <p class="body-text">
+          Nous disposons de pièces courantes pour les pannes les plus fréquentes, ce qui permet souvent d’intervenir rapidement. Pour les composants spécifiques, nous vous informons clairement du délai d’approvisionnement avant intervention.
+        </p>
+
+        <p class="body-text">
+          Les pièces posées sont <strong>garanties selon leur nature</strong>. La durée et les conditions sont précisées sur votre devis ou votre facture.
+        </p>
+      </div>
+
+      <div>
+        <div class="info-card" style="margin-bottom:16px;">
+          <div class="info-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>Pièces garanties</h3>
+          <p>Chaque pièce posée bénéficie d'une garantie adaptée. Durée et conditions précisées sur le devis ou la facture.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <h3>Pièces courantes</h3>
+          <p>Compresseurs, sondes, cartes électroniques, thermostats, ventilateurs et composants fréquents selon disponibilité.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="content-wrapper reveal">
+    <div class="section-label">Pièces disponibles</div>
+
+    <h2 class="section-title">
+      Les <em>pièces</em> que nous remplaçons
+    </h2>
+
+    <div class="content-grid three" style="margin-top:40px;">
+      <div class="info-card">
+        <h3>Composants mécaniques</h3>
+        <ul class="feature-list">
+          <li>Compresseurs hermétiques</li>
+          <li>Ventilateurs et moto-ventilateurs</li>
+          <li>Condenseurs et évaporateurs</li>
+          <li>Détendeurs et vannes</li>
+          <li>Joints et garnitures</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>Composants électroniques</h3>
+        <ul class="feature-list">
+          <li>Cartes électroniques de régulation</li>
+          <li>Sondes de température</li>
+          <li>Thermostats et régulateurs</li>
+          <li>Afficheurs et interfaces</li>
+          <li>Capteurs d'humidité</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>Éléments de structure</h3>
+        <ul class="feature-list">
+          <li>Joints de porte et de caisson</li>
+          <li>Charnières et poignées</li>
+          <li>Clayettes et grilles</li>
+          <li>Éclairages intérieurs LED</li>
+          <li>Pieds et roulettes réglables</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="other-services">
+  <div class="content-wrapper">
+    <div class="section-label">Autres services</div>
+    <h2 class="section-title">Nos autres <em>expertises</em></h2>
+  </div>
+
+  <div class="other-services-grid">
+    <a href="depannage-frigorifique.html" class="other-service-link">Dépannage frigorifique</a>
+    <a href="diagnostic-panne.html" class="other-service-link">Diagnostic & panne</a>
+    <a href="maintenance-entretien.html" class="other-service-link">Maintenance & entretien</a>
+    <a href="installation-materiel.html" class="other-service-link">Installation de matériel</a>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="content-wrapper">
+    <h2>Un problème ? Contactez-nous <em>sans attendre</em></h2>
+    <p>Diagnostic téléphonique gratuit · Devis sans engagement · Intervention rapide</p>
+
+    <div class="cta-actions">
+      <a href="tel:+33652597941" class="btn-primary">+33 6 52 59 79 41</a>
+      <a href="index.html#contact" class="btn-outline">Envoyer une demande</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <div>
+          <a class="nav-logo" href="index.html">
+            <img src="logo.png" alt="RYKFroid" style="height:44px;" />
+          </a>
+        </div>
+      </div>
+
+      <p>
+        Votre frigoriste indépendant : dépannage, réparation et entretien d'équipements frigorifiques. 20+ ans d'expérience, intervention rapide, devis gratuit.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="depannage-frigorifique.html">Dépannage frigorifique</a></li>
+        <li><a href="diagnostic-panne.html">Diagnostic &amp; panne</a></li>
+        <li><a href="maintenance-entretien.html">Maintenance &amp; entretien</a></li>
+        <li><a href="installation-materiel.html">Installation matériel</a></li>
+        <li><a href="remplacement-pieces.html">Remplacement pièces</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+33652597941">+33 6 52 59 79 41</a></li>
+        <li><a href="mailto:rykfroid@gmail.com">rykfroid@gmail.com</a></li>
+        <li><a href="index.html#faq">Questions fréquentes</a></li>
+        <li><a href="index.html#contact">Demander un devis</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 RYKFroid – Auto-entrepreneur. Tous droits réservés.</p>
+    <p>Expert frigoriste indépendant · Dépannage frigorifique · Maintenance · <a href="espace-pro.html" style="color:rgba(255,255,255,.3);text-decoration:none;">Espace pro</a></p>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.setAttribute('aria-controls', 'navLinks');
+  burger.setAttribute('aria-expanded', 'false');
+  new MutationObserver(() => burger.setAttribute('aria-expanded', navLinks.classList.contains('open')))
+    .observe(navLinks, { attributes: true, attributeFilter: ['class'] });
+
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<script src="extras.js" defer></script>
 </body>
 </html>
